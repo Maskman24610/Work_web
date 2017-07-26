@@ -20,24 +20,24 @@
 		<script>
 		    var i = 1;
 			function addInput(){
-				var div1 = $("#math");
-				var st = '<div class="question" id="div_'+i+'"><input type="text" value="標題" id="title_'+i+'"><input type="text" name="test" id="test_'+i+'" value="這是測試" /><button class=delete onclick=removDiv("div_'+i+'")>移除</button></div>';
-				div1.append(st);
+				var divMain = $("#math");
+				var st = '<div class="question" id="div_'+i+'"><input type="text" value="標題" id="title_'+i+'"><input type="text" name="test" id="test_'+i+'" value="這是測試" /><button class=delete onclick=removDiv("div_'+i+'")>移除</button><input type="checkbox" class ="auth_vis" id="visible_check_"'+i+'/>有權限的人可見<input type="checkbox" class ="auth_ena" id="enable_check_"'+i+'/>有權限的人才能對元件進行操作</div>';
+				divMain.append(st);
 				i++;
 			}
 			
 			function addRadio(){
-				var div1 = $("#math");
+				var divMain = $("#math");
 				var st = '<div class="question" id="div_'+i+'"><input type="radio" name="group_'+i+'" id="test_'+i+'" value="這是測試" >測試Radio</input><button class=delete onclick=removDiv("div_'+i+'")>移除</button></div>';
-				div1.append(st);
+				divMain.append(st);
 				i++;
 			}
 			
 			function addSelect(){
-				var div1 = $("#math");
+				var divMain = $("#math");
 				var st = '<div class="question" id="div_'+i+'"><input type="text" id="se_title" value="標籤"><select id = "sch"></select><button class=delete onclick=removDiv("div_'+i+'")>移除</button><br><input id="opt" type="text" value="設定option"/></div>';
 				<!--<option value="man">測試用選項</option>-->
-				div1.append(st);
+				divMain.append(st);
 				$("#opt").keydown(function(event){
 					if(event.keyCode == 13)
 						$("#sch").append("<option>"+$("#opt").val()+"</option>");
@@ -47,23 +47,23 @@
 			}
 			
 			function addCheckBox(){
-				var div1 = $("#math");
+				var divMain = $("#math");
 				var st = '<div class="question" id="div_'+i+'"><input type="checkbox"></input><button class=delete onclick=removDiv("div_'+i+'")>移除</button></div>';
-				div1.append(st);
+				divMain.append(st);
 				i++;
 			}
 			
 			function addTextArea(){
-				var div1 = $("#math");
+				var divMain = $("#math");
 				var st = '<div class="question" id="div_'+i+'"><textarea></textarea><button class=delete onclick=removDiv("div_'+i+'")>移除</button></div>';
-				div1.append(st);
+				divMain.append(st);
 				i++;
 			}
 			
 			function addTable(){
-				var div1 = $("#math");
+				var divMain = $("#math");
 				var st = '<div class="question" id="div_'+i+'"><table name="form-table" border = "1"><tr><th>欄1</th><th>欄2</th><th>欄3</th></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr></table><button class=delete onclick=removDiv("div_'+i+'")>移除</button></div>';
-				div1.append(st);
+				divMain.append(st);
 				i++;
 			}
 			
@@ -78,13 +78,17 @@
 				var j = 1;
 				var divs = document.getElementsByClassName('question');
 				var btns = document.getElementsByClassName('delete');
+				var vis = document.getElementsByClassName('auth_vis');
+				var enas = document.getElementsByClassName('auth_ena');
 				for (k=0;k<divs.length;k++){
 					divs[k].id = 'div_'+j;
 					//btns[k].onclick = '';
 					//btns[k].onclick = function onclick(event){removDiv("div_"+j);};
 					//$(btns[k]).click(function onclick(event){removDiv('div_'+j);});
                     btns[k].onclick = new Function('removDiv("div_'+j+'")');
-					j++;
+					vis[k].id = "visible_check_"+j;
+					enas[k].id = "enable_check_"+j;
+                    j++;
 				}
 			}
 		</script>
