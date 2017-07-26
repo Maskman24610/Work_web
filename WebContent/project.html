@@ -1,0 +1,92 @@
+<html>
+	<head>
+		<meta http-equiv='Content-Type' content='text/html'; charset='Utf-8'>
+		<link rel='stylesheet' href='project.css'>
+		<script type='text/javascript' src='scripts/jquery-3.2.1.min.js'></script>
+		<script type='text/javascript' src='scripts/json2.js'></script>
+		<script type='text/javascript' src='scripts/json_parse.js'></script>
+	</head>
+	
+	<body>
+		<div class='math' name='math' id='math'></div>
+		<div class='tool' id='toolBox' name='toolBox' >
+			<div role='button' class='input' onclick="addInput()">Input</div>
+			<div role='button' class='input' onclick='addRadio()'>Radio</div>
+			<div role='button' class='input' onclick='addSelect()'>Select</div>
+			<div role='button' class='input' onclick='addCheckBox()'>CheckBox</div>
+			<div role='button' class='input' onclick='addTextArea()'>Textarea</div>
+			<div role='button' class='input' onclick='addTable()'>Table</div>
+		</div>
+		<script>
+		    var i = 1;
+			function addInput(){
+				var div1 = $("#math");
+				var st = '<div class="question" id="div_'+i+'"><input type="text" value="標題" id="title_'+i+'"><input type="text" name="test" id="test_'+i+'" value="這是測試" /><button class=delete onclick=removDiv("div_'+i+'")>移除</button></div>';
+				div1.append(st);
+				i++;
+			}
+			
+			function addRadio(){
+				var div1 = $("#math");
+				var st = '<div class="question" id="div_'+i+'"><input type="radio" name="group_'+i+'" id="test_'+i+'" value="這是測試" >測試Radio</input><button class=delete onclick=removDiv("div_'+i+'")>移除</button></div>';
+				div1.append(st);
+				i++;
+			}
+			
+			function addSelect(){
+				var div1 = $("#math");
+				var st = '<div class="question" id="div_'+i+'"><input type="text" id="se_title" value="標籤"><select id = "sch"></select><button class=delete onclick=removDiv("div_'+i+'")>移除</button><br><input id="opt" type="text" value="設定option"/></div>';
+				<!--<option value="man">測試用選項</option>-->
+				div1.append(st);
+				$("#opt").keydown(function(event){
+					if(event.keyCode == 13)
+						$("#sch").append("<option>"+$("#opt").val()+"</option>");
+					    $('#opt').val('');
+				});
+				i++;
+			}
+			
+			function addCheckBox(){
+				var div1 = $("#math");
+				var st = '<div class="question" id="div_'+i+'"><input type="checkbox"></input><button class=delete onclick=removDiv("div_'+i+'")>移除</button></div>';
+				div1.append(st);
+				i++;
+			}
+			
+			function addTextArea(){
+				var div1 = $("#math");
+				var st = '<div class="question" id="div_'+i+'"><textarea></textarea><button class=delete onclick=removDiv("div_'+i+'")>移除</button></div>';
+				div1.append(st);
+				i++;
+			}
+			
+			function addTable(){
+				var div1 = $("#math");
+				var st = '<div class="question" id="div_'+i+'"><table name="form-table" border = "1"><tr><th>欄1</th><th>欄2</th><th>欄3</th></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr></table><button class=delete onclick=removDiv("div_'+i+'")>移除</button></div>';
+				div1.append(st);
+				i++;
+			}
+			
+			function removDiv(id){
+				var div = $('#'+id);
+				div.remove();
+				refreshId();
+				i--;
+			}
+			
+			function refreshId(){
+				var j = 1;
+				var divs = document.getElementsByClassName('question');
+				var btns = document.getElementsByClassName('delete');
+				for (k=0;k<divs.length;k++){
+					divs[k].id = 'div_'+j;
+					//btns[k].onclick = '';
+					//btns[k].onclick = function onclick(event){removDiv("div_"+j);};
+					//$(btns[k]).click(function onclick(event){removDiv('div_'+j);});
+                    btns[k].onclick = new Function('removDiv("div_'+j+'")');
+					j++;
+				}
+			}
+		</script>
+	</body>
+</html>
