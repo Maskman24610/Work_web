@@ -8,7 +8,11 @@
 	</head>
 	
 	<body>
+	    <!--  <form><input type='submit' value='送出'/>
+		</form>-->
 		<div class='math' name='math' id='math'></div>
+		
+		
 		<div class='tool' id='toolBox' name='toolBox' >
 			<div role='button' class='input' onclick="addInput()">Input</div>
 			<div role='button' class='input' onclick='addRadio()'>Radio</div>
@@ -21,21 +25,21 @@
 		    var i = 1;
 			function addInput(){
 				var divMain = $("#math");
-				var st = '<div class="question" id="div_'+i+'"><input type="text" value="標題" id="title_'+i+'"><input type="text" name="test" id="test_'+i+'" value="這是測試" /><button class=delete onclick=removDiv("div_'+i+'")>移除</button><input type="checkbox" class ="auth_vis" id="visible_check_"'+i+'/>有權限的人可見<input type="checkbox" class ="auth_ena" id="enable_check_"'+i+'/>有權限的人才能對元件進行操作</div>';
+				var st = '<div class="question" id="div_'+i+'"><input name="title" type="text" value="標題" id="title_'+i+'"><input type="text" name="test" id="test_'+i+'" value="這是測試" /><button class=delete onclick=removDiv("div_'+i+'")>移除</button><input name="visible" type="checkbox" class ="auth_vis" id="visible_check_'+i+'"/>有權限的人可見<input name="enable" type="checkbox" class ="auth_ena" id="enable_check_'+i+'"/>有權限的人才能對元件進行操作</div>';
 				divMain.append(st);
 				i++;
 			}
 			
 			function addRadio(){
 				var divMain = $("#math");
-				var st = '<div class="question" id="div_'+i+'"><input type="radio" name="group_'+i+'" id="test_'+i+'" value="這是測試" >測試Radio</input><button class=delete onclick=removDiv("div_'+i+'")>移除</button></div>';
+				var st = '<div class="question" id="div_'+i+'"><input name="title" type="text" value="標題" id="title_'+i+'"><input type="radio" name="group_'+i+'" id="test_'+i+'" value="這是測試" >測試Radio</input><button class=delete onclick=removDiv("div_'+i+'")>移除</button><input name="visible" type="checkbox" class ="auth_vis" id="visible_check_'+i+'"/>有權限的人可見<input name="enable" type="checkbox" class ="auth_ena" id="enable_check_'+i+'"/>有權限的人才能對元件進行操作</div>';
 				divMain.append(st);
 				i++;
 			}
 			
 			function addSelect(){
 				var divMain = $("#math");
-				var st = '<div class="question" id="div_'+i+'"><input type="text" id="se_title" value="標籤"><select id = "sch"></select><button class=delete onclick=removDiv("div_'+i+'")>移除</button><br><input id="opt" type="text" value="設定option"/></div>';
+				var st = '<div class="question" id="div_'+i+'"><input name="title" type="text" value="標題" id="title_'+i+'"><input type="text" id="se_title" value="標籤"><select id = "select_"></select><button class=delete onclick=removDiv("div_'+i+'")>移除</button><input name="visible" type="checkbox" class ="auth_vis" id="visible_check_'+i+'"/>有權限的人可見<input name="enable" type="checkbox" class ="auth_ena" id="enable_check_'+i+'"/>有權限的人才能對元件進行操作<br><input id="opt" type="text" value="設定option"/></div>';
 				<!--<option value="man">測試用選項</option>-->
 				divMain.append(st);
 				$("#opt").keydown(function(event){
@@ -48,21 +52,21 @@
 			
 			function addCheckBox(){
 				var divMain = $("#math");
-				var st = '<div class="question" id="div_'+i+'"><input type="checkbox"></input><button class=delete onclick=removDiv("div_'+i+'")>移除</button></div>';
+				var st = '<div class="question" id="div_'+i+'"><input name="title" type="text" value="標題" id="title_'+i+'"><input type="checkbox"></input><button class=delete onclick=removDiv("div_'+i+'")>移除</button><input name="visible" type="checkbox" class ="auth_vis" id="visible_check_'+i+'"/>有權限的人可見<input name="enable" type="checkbox" class ="auth_ena" id="enable_check_'+i+'"/>有權限的人才能對元件進行操作</div>';
 				divMain.append(st);
 				i++;
 			}
 			
 			function addTextArea(){
 				var divMain = $("#math");
-				var st = '<div class="question" id="div_'+i+'"><textarea></textarea><button class=delete onclick=removDiv("div_'+i+'")>移除</button></div>';
+				var st = '<div class="question" id="div_'+i+'"><input name="title" type="text" value="標題" id="title_'+i+'"><textarea></textarea><button class=delete onclick=removDiv("div_'+i+'")>移除</button><input name="visible" type="checkbox" class ="auth_vis" id="visible_check_'+i+'"/>有權限的人可見<input name="enable" type="checkbox" class ="auth_ena" id="enable_check_'+i+'"/>有權限的人才能對元件進行操作</div>';
 				divMain.append(st);
 				i++;
 			}
 			
 			function addTable(){
 				var divMain = $("#math");
-				var st = '<div class="question" id="div_'+i+'"><table name="form-table" border = "1"><tr><th>欄1</th><th>欄2</th><th>欄3</th></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr></table><button class=delete onclick=removDiv("div_'+i+'")>移除</button></div>';
+				var st = '<div class="question" id="div_'+i+'"><input name="title" type="text" value="標題" id="title_'+i+'"><table name="form-table" border = "1"><tr><th>欄1</th><th>欄2</th><th>欄3</th></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr></table><button class=delete onclick=removDiv("div_'+i+'")>移除</button><input name="visible" type="checkbox" class ="auth_vis" id="visible_check_'+i+'"/>有權限的人可見<input name="enable" type="checkbox" class ="auth_ena" id="enable_check_'+i+'"/>有權限的人才能對元件進行操作</div>';
 				divMain.append(st);
 				i++;
 			}
