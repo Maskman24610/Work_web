@@ -1,5 +1,5 @@
 .div{float:left}
 .math { border:2px solid #00f}
 .tool { width:50px; height:300px; border:1px solid}
-.math .question{width:100%; padding:60px} 
+.math .question{width:100%; padding:10px} 
 .tool .input {width:50px; height:50px; background-color:gray;cursor:pointer}
