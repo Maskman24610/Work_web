@@ -23,9 +23,19 @@
 		</div>
 		<script>
 		    var i = 1;
-		    var divId;
-		    function Id(){
-		    	alert($(this).attr("id"));
+		    var divId = null;
+		    function addOption(obj){
+		    	divId = $(obj).parent().attr("id");
+		    	console.log(divId);
+		    	if(divId != null){
+					var opt = $("#" + divId).children("input[id='opt']");
+					opt.keydown(function(event){
+						var select = $("#" + divId).children("select"); 
+						if(event.keyCode == 13)
+							$(select).append("<option>"+$(opt).val()+"</option>");
+	                        $(opt).val('');
+					});
+				}
 		    }
 			function addInput(){
 				var divMain = $("#math");
@@ -43,17 +53,9 @@
 			
 			function addSelect(){
 				var divMain = $("#math");
-				var st = '<div class="question" id="div_'+i+'"><input type="text" id="title_'+i+'" value="標籤"><select id = "sch"></select><button class=delete onclick=removDiv("div_'+i+'")>移除</button><input name="visible" type="checkbox" class ="auth_vis" id="visible_check_'+i+'"/>有權限的人可見<input name="enable" type="checkbox" class ="auth_ena" id="enable_check_'+i+'"/>有權限的人才能對元件進行操作<br><input id="opt" type="text" value="設定option" onblur="Id()"/></div>';
+				var st = '<div class="question" id="div_'+i+'"><input type="text" id="title_'+i+'" value="標籤"><select id = "sch"></select><button class=delete onclick=removDiv("div_'+i+'")>移除</button><input name="visible" type="checkbox" class ="auth_vis" id="visible_check_'+i+'"/>有權限的人可見<input name="enable" type="checkbox" class ="auth_ena" id="enable_check_'+i+'"/>有權限的人才能對元件進行操作<br><input id="opt" type="text" value="設定option" onfocus="addOption(this)"/></div>';
 				<!--<option value="man">測試用選項</option>-->
-				divId ;
 				divMain.append(st);
-				var opt = $("#" + divId).children("input[id='opt']");
-				opt.keydown(function(event){
-					var select = $("#" + divId).children("select"); 
-					if(event.keyCode == 13)
-						$(select).append("<option>"+$(opt).val()+"</option>");
-                        $(opt).val('');
-				});
 				i++;
 			}
 			
