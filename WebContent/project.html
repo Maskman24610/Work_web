@@ -23,17 +23,17 @@
 		</div>
 		<script>
 		    var i = 1;
-		    var divId = null;
+		    //var divId = null;
 		    function addOption(obj){
 		    	divId = $(obj).parent().attr("id");
-		    	console.log(divId);
 		    	if(divId != null){
 					var opt = $("#" + divId).children("input[id='opt']");
 					opt.keydown(function(event){
 						var select = $("#" + divId).children("select"); 
-						if(event.keyCode == 13)
+						if(event.keyCode == 13 && opt.val() != ''){
 							$(select).append("<option>"+$(opt).val()+"</option>");
 	                        $(opt).val('');
+						}
 					});
 				}
 		    }
@@ -46,7 +46,7 @@
 			
 			function addRadio(){
 				var divMain = $("#math");
-				var st = '<div class="question" id="div_'+i+'"><input name="title" type="text" value="標題" id="title_'+i+'"><input type="radio" name="group_'+i+'" id="test_'+i+'" value="這是測試" >測試Radio</input><button class=delete onclick=removDiv("div_'+i+'")>移除</button><input name="visible" type="checkbox" class ="auth_vis" id="visible_check_'+i+'"/>有權限的人可見<input name="enable" type="checkbox" class ="auth_ena" id="enable_check_'+i+'"/>有權限的人才能對元件進行操作</div>';
+				var st = '<div class="question" id="div_'+i+'"><input name="title" type="text" value="標題" id="title_'+i+'"><input type="radio" name="group_'+i+'" id="test_'+i+'" value="這是測試" >測試Radio</input><button class=delete onclick=removDiv("div_'+i+'")>移除</button><input name="visible" type="checkbox" class ="auth_vis" id="visible_check_'+i+'"/>有權限的人可見<input name="enable" type="checkbox" class ="auth_ena" id="enable_check_'+i+'"/>有權限的人才能對元件進行操作<br>增加其他選項<input type="text" id="rd"></div>';
 				divMain.append(st);
 				i++;
 			}

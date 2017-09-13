@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+  <style>
+    div {
+      margin:0 2px; padding:0.35em 0.625em 0.75em;border: solid 1px #c0c0c0
+    }
+    fieldset {
+      position:absolute;
+      top:;
+      left:;
+      margin:0 2px; padding:0.35em 0.625em 0.75em;border: solid 1px #c0c0c0
+    }
+  </style>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+  <!--  <div draggable="true"></div>
+  <fieldset draggable="true"><input type="text" placeholder="測試">
+       <input type="button"></fieldset>
+  <fieldset draggable="true"></fieldset>-->     
+  <script>
+    var $x, $y, $key;
+    $('fieldset').bind({
+    	mousedown: function(event) {
+    		var $event = event;
+    		var $object = $(this).offset();
+    		$x = $event.pageX - $object.left;
+    		$y = $event.pageY - $object.top;
+    		$key = true;
+    	},
+    	mousemove: function(event) {
+    		if($key) {
+    			var $event = event;
+    			$(this).css({
+    				'top': $event.pageY - $y,
+    				'left': $event.pageX - $x 
+    			});
+    		}
+    	},
+    	mouseup: function() {
+    		$key = false;
+    	}
+    });
+  </script>
+  <table style="border: solid 1px blue" border=1>
+  	<tr><th>姓名</th><th>教授科目</th></tr>
+  	<tr><td><input type="text" /></td><td><input type="text"/></td></tr>
+    <tr><td></td><td></td></tr>
+  </table>
+  <iframe width="804" height="250" frameborder="0" scrolling="no" src="https://onedrive.live.com/embed?cid=E78FF7D6AE8BF382&resid=E78FF7D6AE8BF382%21207&authkey=&em=2&wdAllowInteractivity=False&wdHideGridlines=True&AllowTyping=True&wdHideHeaders=True&wdDownloadButton=True"></iframe>
+</body>
+</html>

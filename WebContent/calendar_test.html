@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Calendar Test</title>
+  <link rel="stylesheet" type="text/css" href="mootools_calendar/calendar.css">
+  <script type="text/javascript" src="mootools_calendar/mootools.js"></script>
+  <script type="text/javascript" src="mootools_calendar/calendar.js"></script>
+</head>
+<body>
+  <script type="text/javascript">
+    window.addEvent('domready', function() {
+    	myCal = new Calendar({ date: 'Y-m-d' });
+    });
+  </script>
+  <div><input type="text" name="date" id="date" style="float: left"/></div>
+</body>
+</html>

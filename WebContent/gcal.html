@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>和Google行事曆同步</title>
+    <link type="text/css" rel="stylesheet" href="calendar/fullcalendar.min.css"/>
+    <link type="text/css" rel="stylesheet" href="calendar/fullcalendar.pirnt.min.css" media="print"/>
+    <script type="text/javascript" src="calendar/lib/moment.min.js"></script>
+    <script type="text/javascript" src="calendar/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="calendar/fullcalendar.min.js"></script>
+    <script type="text/javascript" src="calendar/gcal.min.js"></script>
+    <style>
+      body {
+        margin: 40px 10px;
+        padding: 0;
+        font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+        font-size: 14px;
+      }
+      
+      #loading {
+        display: none;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+      }
+      
+      #calendar {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loading">loading...</div>
+    <div id="calendar"></div>
+    <script>
+      $(document).ready(function() {
+    	  $('#calendar').fullCalendar({
+    		  header: {
+    			  left: 'prev,next today',
+    			  center: 'title',
+    			  right: 'month,listYear'
+    		  },
+    		  
+    		  displayEventTime: false, // don't show the time column in list view
+    		  
+    		  //This key won't work in production!!!
+    		  //To make your own Google API key,
+    		  //following the directions here:
+    		  // http://fullcalendar.io/docs/google_calendar/
+    	      
+    		  googleCalendarApiKey:'xxxx',
+    		  events: 'xxxxxx',
+    		  eventClick: function(event) {
+    			  // opens events in a popup window
+    			  window.open(event.url, 'gcalevent', 'width=700,height=600');
+    			  return false;
+    		  },
+    		  loading: function(bool) {
+    			  $('#loading').toggle(bool);
+    		  }
+    	  });
+    	  
+      });
+    </script>
+  </body>
+</html>
