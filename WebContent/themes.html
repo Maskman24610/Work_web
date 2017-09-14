@@ -152,8 +152,14 @@
     				  header: {
     					  left: 'prev,next today',
     					  center: 'title',
-    					  right: 'month,agendaWeek,agendaDay,listMonth'
+    					  right: 'month,agendaWeek,agendaDay,listMonth,listWeek,listDay'
     				  },
+    				  // customize the button names,
+    				  //otherwise they'd all just say "list"
+    				  views: { listMonth: { buttonText: 'list month'},
+    					       listDay: { buttonText: 'list day'},
+    					       listWeek: { buttonText: 'list week'}
+    				         },
     				  defaultDate: '2017-09-12',
     				  selectable: true,
     				  selectHelper: false,
